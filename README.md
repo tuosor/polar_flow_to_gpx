@@ -5,7 +5,8 @@ Implemented on Python version 3.11.3, on 64-bit Windows 10.
 
 ## First, fire up your cmd.
 Change to your directory (replace *your directory here* below) and create virtual environment.
-```cd *your directory here*
+```
+cd *your directory here*
 python -m venv venv
 .\venv\Scripts\activate
 ```
