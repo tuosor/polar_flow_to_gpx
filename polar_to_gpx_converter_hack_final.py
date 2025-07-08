@@ -13,6 +13,10 @@ file_list = os.listdir(DIRECTORY_IN)
 DIRECTORY_OUT = '.\\converted_polar-user-data-export\\'
 if not os.path.exists(DIRECTORY_OUT): os.mkdir(DIRECTORY_OUT)
 
+# Resample gps track to include only every nth point (n = integer).
+# Leave resample_number = 1 to include the whole track.
+resample_number = 10
+
 for file in file_list:
    if not file.startswith('training-session'): continue # Export .zip contains files other than training sessions.
    print('------------')
@@ -32,7 +36,8 @@ for file in file_list:
       print('No GPS track in file. Continuing to next file...')
       continue
    recorded_route = samples['recordedRoute']
-
+   recorded_route = recorded_route[::resample_number]
+   
 
    # New output file name and check if it already exists
    new_file_name = sport + '_' + os.path.splitext(file)[0] + '.gpx'
